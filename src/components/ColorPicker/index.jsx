@@ -1,27 +1,42 @@
 import React, { useState } from "react";
 import { Button } from "components";
+import { message } from 'antd';
 
 const ColorPicker = () => {
   const [selectedColor, setSelectedColor] = useState("#f96221");
   const [buttonColor, setButtonColor] = useState("");
   const [buttonName, setButtonName] = useState("#f96221");
 
+  const success = () => {
+    message.success('copied');
+  };
+
 
 
   var cpnBtn = document.getElementById("copybutton");
+  var color ;
   const selectColor = (color) => {
     setSelectedColor(color);
     setButtonColor(color);
     setButtonName(color);
   };
+  color = buttonName;
+  window.localStorage.setItem("RRR", color);
+
+  message.config({
+    top: 100,
+    duration: 2,
+  });
 
   const copyColorName = () => {
     navigator.clipboard.writeText(buttonName);
-
-    cpnBtn.innerHTML = "copied";
-    setTimeout(function(){
-        cpnBtn.innerHTML = buttonName;
-      }, 400);
+    message.success('copied');
+    
+    // cpnBtn.innerHTML = "copied";
+    
+    // setTimeout(function(){
+    //     cpnBtn.innerHTML = buttonName;
+    //   }, 400);
     // show some notification or feedback to the user
   };
 

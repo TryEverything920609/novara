@@ -12,7 +12,8 @@ const Landing003Page = () => {
   const [visibleFixedHeader, setVisibleFixedHeader] = useState(false);
   const [firstPhoneHidden, setfirstPhoneHidden] = useState(0);
   const [firstPhoneScale, setFirstPhoneScale] = useState(1);
-  const [twicePhoneScale, setTwicePhoneScale] = useState(0);
+  var colorchange = window.localStorage.getItem("RRR");
+  console.log(colorchange);
 
   const [frame, setFrame] = useState(0)
   useEffect(() => {
@@ -20,12 +21,12 @@ const Landing003Page = () => {
     window.addEventListener('scroll', (e) => {
       setVisibleFixedHeader(e.currentTarget.scrollY > 600);
       if (e.currentTarget.scrollY > 600 && 600 / e.currentTarget.scrollY > 0.75) setFirstPhoneScale(600 / e.currentTarget.scrollY);
-      if (e.currentTarget.scrollY > 816 && e.currentTarget.scrollY / 816 < 2) setTwicePhoneScale(e.currentTarget.scrollY / 816 - 1);
 
       if (e.currentTarget.scrollY<800){ setfirstPhoneHidden (0)}
       if (e.currentTarget.scrollY>800 && e.currentTarget.scrollY<1800){ setfirstPhoneHidden (1)}
       if (e.currentTarget.scrollY>1800 && e.currentTarget.scrollY < 2700) { setfirstPhoneHidden (2)}
       if (e.currentTarget.scrollY>2700 && e.currentTarget.scrollY < 3600) { setfirstPhoneHidden (3)}
+      console.log(visibleFixedHeader);
 
     });
   },[])
@@ -101,33 +102,36 @@ const Landing003Page = () => {
               <div className="flex flex-col items-center justify-start z-0 sticky top-4"  style={{ transform: `scale(${firstPhoneScale})` }}>
                 <div className="h-[948px]  w-[468px] md:h-[709px] md:w-[350px] p-0.5  relative">
                   <Img
-                    className="absolute h-[948px] w-[468px] md:h-[709px] md:w-[350px] m-auto object-cover "
+                    className={`absolute h-[948px] w-[468px] md:h-[709px] md:w-[350px] ${
+                      visibleFixedHeader ? "md:top-[100px]" : "md:top-[0px]"
+                    }  m-auto object-cover`}
+                    
                     src="images/img_iphone12pro.png"
                     alt="iphone12pro"
                   />
                     <Img
                       className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1000 ${
-                        firstPhoneHidden === 0 ? "opacity-100" : "opacity-0"
+                        firstPhoneHidden === 0 ? "opacity-100" : "opacity-0", visibleFixedHeader ? "md:top-[100px]" : "md:top-[0px]"
                       }`}
                       src="images/img_screeniphone12.svg"
                       alt="screeniphoneTwelve"
                     />
                     <Img
-                      className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1000 ${
+                      className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] md:top-[100px] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1 ${
                         firstPhoneHidden === 1 ? "opacity-100" : "opacity-0"
                       }`}
                       src="images/img_animate.png"
                       alt="screeniphoneTwelve"
                     />
                     <Img
-                      className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1000 ${
+                      className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] md:top-[100px] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1000 ${
                         firstPhoneHidden === 2 ? "opacity-100" : "opacity-0"
                       }`}
                       src="images/img_phone1.png"
                       alt="screeniphoneTwelve"
                     />
                     <Img
-                      className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1000 ${
+                      className={`absolute h-[908px] w-[421px] md:h-[679px] md:w-[315px] inset-[0] md:top-[100px] justify-center mt-[19.7px] mx-[23.79px] md:mt-[14.7px] md:mx-[17.8px] frame-transition transition-opacity duration-1000 ${
                         firstPhoneHidden === 3 ? "opacity-100" : "opacity-0"
                       }`}
                       src="images/img_phone2.png"
@@ -135,14 +139,16 @@ const Landing003Page = () => {
                     />
 
                   <Img
-                    className="absolute h-[44px] w-[390px] md:h-[33px] md:w-[291.6px] inset-x-[0] mt-[14.95px] ml-[27.67px]"
+                    className={`absolute h-[44px] w-[390px] md:h-[33px] md:w-[291.6px] inset-x-[0]  mt-[14.95px] ml-[27.67px] ${
+                      visibleFixedHeader ? "md:top-[100px]" : "md:top-[0px]"
+                    }`}
                     src="images/img_statusbar.svg"
                     alt="statusbar"
                   />
                 </div>
               </div>
             </div>
-            <div className="absolute w-full flex flex-col justify-evenly z-1 m-auto max-w-[1000px]  md:max-w-[700px] sm :max-w-[400px] ml-[30px] md:ml-[22.43px] gap-10">
+            <div className="absolute w-full flex flex-col justify-evenly z-1 m-auto max-w-[1000px]  md:max-w-[700px] sm :max-w-[400px] gap-10">
 
               <div data-aos="fade-right" data-aos-duration="1000" className="flex justify-start pl-[18px] md:pl-[13.46px]">
 
@@ -178,16 +184,15 @@ const Landing003Page = () => {
                 </div>
               </div>
             </div>
-            
 
 
             <div  className=" absolute w-full flex flex-col justify-evenly mt-[900px] z-1 h-[2700px] bg-white-900 m-auto md:hidden">
 
-              <div data-aos="fade-up" data-aos-duration="3000" className="flex justify-start ">
+              <div data-aos="fade-up" data-aos-duration="3000" className="flex justify-start">
                 <div data-aos="fade-up" data-aos-duration="2000" className="relative h-[900px] w-[35%] lg:[30%] justify-start">
                 <div className="flex flex-col gap-[38px] float-right items-start justify-end md:mt-0 mt-[54px] px-4 w-full max-w-[463px] md:w-full">
                     <Text
-                      className="lg:text-[33px] text-[50px]  float-right text-black-900"
+                      className="lg:text-[33px] text-[50px] float-right text-black-900"
                       size="txtOutfitExtraBold50"
                     >
                       <>
@@ -416,6 +421,10 @@ const Landing003Page = () => {
                       className="h-[586px] object-cover w[271.53px]"
                       src="images/img_screeniphone12_586x271.png"
                       alt="screeniphoneTwelve_Five"
+                    />
+                    <div 
+                      style={{ backgroundColor: colorchange }}
+                      className="absolute h-[28px] w-[28px] top-[58px]  left-[229px] rounded-full object-cover"
                     />
                     <Text
                       className="absolute left-[5%] text-shadow-ts text-sm text-white-A700 top-[11%]"
