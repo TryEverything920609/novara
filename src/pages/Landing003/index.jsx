@@ -6,12 +6,14 @@ import Picture from "components/Bubble/Rotate";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import ColorPicker from "components/ColorPicker";
+import { LiaCogSolid } from 'react-icons/lia';
 AOS.init();
 const Landing003Page = () => {
 
   const [visibleFixedHeader, setVisibleFixedHeader] = useState(false);
   const [firstPhoneHidden, setfirstPhoneHidden] = useState(0);
   const [firstPhoneScale, setFirstPhoneScale] = useState(1);
+  const [color, setColor] = useState('#f96221');
   var colorchange = window.localStorage.getItem("RRR");
   console.log(colorchange);
 
@@ -423,9 +425,11 @@ const Landing003Page = () => {
                       alt="screeniphoneTwelve_Five"
                     />
                     <div 
-                      style={{ backgroundColor: colorchange }}
-                      className="absolute h-[28px] w-[28px] top-[58px]  left-[229px] rounded-full object-cover"
-                    />
+                      style={{ backgroundColor: color }}
+                      className="absolute h-[29px] w-[29px] top-[58px]  left-[228px] rounded-full object-cover flex justify-center items-center"
+                    >
+                      <LiaCogSolid className="w-5 h-5" style={{ color: color > '#f99999' ? 'black' : 'white' }} />
+                    </div>
                     <Text
                       className="absolute left-[5%] text-shadow-ts text-sm text-white-A700 top-[11%]"
                       size="txtNunitoExtraBold14"
@@ -458,7 +462,7 @@ const Landing003Page = () => {
                       >
                         Color
                       </Text>
-                      <ColorPicker className="flex flex-row gap-5 items-center justify-between w-full"/>
+                      <ColorPicker className="flex flex-row gap-5 items-center justify-between w-full" setColor={setColor}/>
                     </div>
                   </div>
                   <div className="flex flex-col gap-[5px] items-start justify-start mt-[38px] w-full">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "components";
 import { message } from 'antd';
 
-const ColorPicker = () => {
+const ColorPicker = ({setColor}) => {
   const [selectedColor, setSelectedColor] = useState("#f96221");
   const [buttonColor, setButtonColor] = useState("");
   const [buttonName, setButtonName] = useState("#f96221");
@@ -16,6 +16,7 @@ const ColorPicker = () => {
   var cpnBtn = document.getElementById("copybutton");
   var color ;
   const selectColor = (color) => {
+    setColor(color);
     setSelectedColor(color);
     setButtonColor(color);
     setButtonName(color);
