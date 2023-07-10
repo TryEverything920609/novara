@@ -5,12 +5,11 @@ import Card from "components/Card";
 import Picture from "components/Bubble/Rotate";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
-import { Select } from "antd";
+import { Select, Option } from "antd";
 import ColorPicker from "components/ColorPicker";
 import { LiaCogSolid } from 'react-icons/lia';
 
 import "@fontsource/inter";
-import Dropdown from 'react-dropdown'
 AOS.init();
 const Landing003Page = () => {
 
@@ -20,7 +19,6 @@ const Landing003Page = () => {
   const [color, setColor] = useState('#f96221');
   const [fontFamily, setFontFamily] =useState('Inter');
   var colorchange = window.localStorage.getItem("RRR");
-  console.log(colorchange);
 
   const handleFontChange = (value) => {
     setFontFamily(value);
