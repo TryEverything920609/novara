@@ -5,9 +5,10 @@ import Card from "components/Card";
 import Picture from "components/Bubble/Rotate";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
-import { Select, Option } from "antd";
+import { Select } from "antd";
 import ColorPicker from "components/ColorPicker";
 import { LiaCogSolid } from 'react-icons/lia';
+const { Option } = Select;
 
 import "@fontsource/inter";
 AOS.init();
