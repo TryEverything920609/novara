@@ -8,9 +8,8 @@ import 'aos/dist/aos.css';
 import { Select } from "antd";
 import ColorPicker from "components/ColorPicker";
 import { LiaCogSolid } from 'react-icons/lia';
-const { Option } = Select;
-
 import "@fontsource/inter";
+const { Option } = Select;
 AOS.init();
 const Landing003Page = () => {
 
@@ -19,7 +18,6 @@ const Landing003Page = () => {
   const [firstPhoneScale, setFirstPhoneScale] = useState(1);
   const [color, setColor] = useState('#f96221');
   const [fontFamily, setFontFamily] =useState('Inter');
-  var colorchange = window.localStorage.getItem("RRR");
 
   const handleFontChange = (value) => {
     setFontFamily(value);
