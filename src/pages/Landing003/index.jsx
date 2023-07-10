@@ -482,17 +482,12 @@ const Landing003Page = () => {
                     >
                       Font
                     </Text>
-                    {/* <Button onClick={()=>{setFontFamily('Inter')}} className="bg-white-A700 cursor-pointer font-medium leading-[normal] min-w-[240px] py-2.5 rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center">
-                      Inter
-                    </Button> */}
                     <Select defaultValue={fontFamily} onChange={handleFontChange} className=" min-w-[240px]  rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center">
                       <Option value="Inter">Inter</Option>
                       <Option value="Arial">Arial</Option>
                       <Option value="Verdana">Verdana</Option>
                       <Option value="Times New Roman">Times New Roman</Option>
-                      {/* Add more font options here */}
                     </Select>
-                    {/* <Dropdown options={options}    className="bg-white-A700 cursor-pointer font-medium leading-[normal] min-w-[240px] py-2.5 rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center" placeholder="Select an option" /> */}
                   </div>
                   <div className="flex flex-row items-start justify-between mt-7 w-[97%] md:w-full">
                     <Text
