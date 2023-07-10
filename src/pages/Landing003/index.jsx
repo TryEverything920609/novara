@@ -5,8 +5,12 @@ import Card from "components/Card";
 import Picture from "components/Bubble/Rotate";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import { Select } from "antd";
 import ColorPicker from "components/ColorPicker";
 import { LiaCogSolid } from 'react-icons/lia';
+
+import "@fontsource/inter";
+import Dropdown from 'react-dropdown'
 AOS.init();
 const Landing003Page = () => {
 
@@ -14,8 +18,13 @@ const Landing003Page = () => {
   const [firstPhoneHidden, setfirstPhoneHidden] = useState(0);
   const [firstPhoneScale, setFirstPhoneScale] = useState(1);
   const [color, setColor] = useState('#f96221');
+  const [fontFamily, setFontFamily] =useState('Inter');
   var colorchange = window.localStorage.getItem("RRR");
   console.log(colorchange);
+
+  const handleFontChange = (value) => {
+    setFontFamily(value);
+  };
 
   const [frame, setFrame] = useState(0)
   useEffect(() => {
@@ -433,6 +442,7 @@ const Landing003Page = () => {
                     <Text
                       className="absolute left-[5%] text-shadow-ts text-sm text-white-A700 top-[11%]"
                       size="txtNunitoExtraBold14"
+                      style={{fontFamily:fontFamily}}
                     >
                       Hello, Guest! 👋
                     </Text>
@@ -472,9 +482,17 @@ const Landing003Page = () => {
                     >
                       Font
                     </Text>
-                    <Button className="bg-white-A700 cursor-pointer font-medium leading-[normal] min-w-[240px] py-2.5 rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center">
+                    {/* <Button onClick={()=>{setFontFamily('Inter')}} className="bg-white-A700 cursor-pointer font-medium leading-[normal] min-w-[240px] py-2.5 rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center">
                       Inter
-                    </Button>
+                    </Button> */}
+                    <Select defaultValue={fontFamily} onChange={handleFontChange} className=" min-w-[240px]  rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center">
+                      <Option value="Inter">Inter</Option>
+                      <Option value="Arial">Arial</Option>
+                      <Option value="Verdana">Verdana</Option>
+                      <Option value="Times New Roman">Times New Roman</Option>
+                      {/* Add more font options here */}
+                    </Select>
+                    {/* <Dropdown options={options}    className="bg-white-A700 cursor-pointer font-medium leading-[normal] min-w-[240px] py-2.5 rounded-[10px] shadow-bs1 text-base text-blue_gray-900 text-center" placeholder="Select an option" /> */}
                   </div>
                   <div className="flex flex-row items-start justify-between mt-7 w-[97%] md:w-full">
                     <Text
